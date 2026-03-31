@@ -30,15 +30,16 @@ php artisan migrate
 ```
 php artisan migrate --seed
 ```
+## userのログイン用初期データ
+・メールアドレス：hanako@test.com
+・パスワード：password
 ## 使用技術(実行環境)
 - PHP8.1.34
 - Laravel8.83.8
 - MySQL8.0.36
-## テーブル設計
-![alt](table_1.png)
-
 ## ER図
 ![alt](erd.png)
 ## URL
 - 開発環境：http://localhost/
 - phpMyAdmin：http://localhost:8080/
+
