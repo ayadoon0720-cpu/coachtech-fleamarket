@@ -1,0 +1,157 @@
+/* 全体 */
+.purchase {
+    max-width: 1000px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* 左側 */
+.left {
+    width: 60%;
+}
+
+/* 商品情報 横並び */
+.item-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* 商品画像 */
+.item-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+/* 商品テキスト */
+.item-text h2 {
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* セレクト */
+select {
+    width: 200px;
+    padding: 8px;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+/* セクション */
+.section {
+    display: block;
+    border-top: 1px solid #000;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.section:last-child {
+    border-bottom: 1px solid #000;
+    padding-bottom: 20px;
+}
+
+/* 配送先ヘッダー */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 変更リンク */
+.section-header a {
+    font-size: 14px;
+    color: #0073cc;
+    text-decoration: none;
+}
+
+/* 住所 */
+.postal_code,
+.address {
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ラベル */
+label {
+    display: block;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* 右側 */
+.right {
+    width: 35%;
+}
+
+/* 枠 */
+.right-box {
+    border: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+/* 行 */
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    border-bottom: 1px solid #000;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+/* 購入ボタン（これだけ使う） */
+.purchase-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: #ff5555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.purchase-btn:hover {
+    opacity: 0.8;
+}
+
+/* Sold */
+.sold-badge {
+    top: 3px;
+    left: 10px;
+    color: #ff5555;
+    padding: 4px 10px;
+    font-size: 18px;
+}
+
+/* レスポンシブ */
+@media screen and (max-width: 768px) {
+    .purchase {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+}
