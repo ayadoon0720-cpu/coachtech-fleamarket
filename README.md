@@ -31,16 +31,17 @@ php artisan migrate
 php artisan migrate --seed
 ```
 ## userのログイン用初期データ
-- メールアドレス：hanako@test.com
+- メールアドレス：yui@test.com
 - パスワード：password
 ## 使用技術(実行環境)
 - PHP8.1.34
 - Laravel8.83.8
 - MySQL8.0.36
 ## ER図
-![alt](erd.png)
-## URL
-- 開発環境：http://localhost/
+![alt](coachtech-fleamarket-ER.png)
+## 開発環境
+- 商品一覧画面：http://localhost/
+- 会員登録画面：http://localhost/register
 - phpMyAdmin：http://localhost:8080/
 ## テスト概要
 本アプリでは、会員登録・ログイン・商品購入などの主要機能について、正常系・異常系のテストを実施しています。
