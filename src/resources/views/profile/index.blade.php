@@ -41,7 +41,7 @@
         @foreach ($items as $item)
 
         <div class="item">
-            <img src="{{ asset('images/' . $item->image) }}">
+            <img src="{{ asset('storage/' . $item->image) }}">
             <p>{{ $item->name }}</p>
         </div>
 
