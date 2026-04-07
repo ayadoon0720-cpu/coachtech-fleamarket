@@ -28,6 +28,11 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=test@example.com
 MAIL_FROM_NAME="FleaMarket"
 ```
+```
+STRIPE_KEY=pk_test_xxxxx
+STRIPE_SECRET=sk_test_xxxxx
+```
+※StripeのAPIキーは各自で取得してください。
 6. アプリケーションキーの作成
 ```
 php artisan key:generate
@@ -40,12 +45,8 @@ php artisan migrate
 ```
 php artisan migrate:fresh --seed
 ```
-11. シンボリックリンク作成
-```
-php artisan storage:link
-```
 ## userのログイン用初期データ
-- メールアドレス：yui@test.com
+- メールアドレス：hanako@test.com
 - パスワード：password
 ## 使用技術(実行環境)
 - PHP8.1.34
