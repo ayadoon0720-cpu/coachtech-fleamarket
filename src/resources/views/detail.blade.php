@@ -9,7 +9,7 @@
 <div class="detail">
 
   <div class="left">
-    <img src="{{ asset('storage/' . $item->image) }}" class="item-img">
+    <img src="{{ asset('images/' . $item->image) }}" class="item-img">
   </div>
 
   <div class="right">
@@ -27,9 +27,9 @@
        @csrf
        <button class="like-btn">
           @if($liked)
-          <img src="{{ asset('storage/items/ハートロゴ_ピンク.png') }}">
+          <img src="{{ asset('images/ハートロゴ_ピンク.png') }}">
           @else
-          <img src="{{ asset('storage/items/ハートロゴ_デフォルト.png') }}">
+          <img src="{{ asset('images/ハートロゴ_デフォルト.png') }}">
           @endif
        </button>
       </form>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="icon-box">
-       <img src="{{ asset('storage/items/ふきだしロゴ.png') }}" class="comment-logo">
+       <img src="{{ asset('images/ふきだしロゴ.png') }}" class="comment-logo">
        <span> {{ $comment_count }}</span>
     </div>
 
@@ -66,7 +66,7 @@
 
   @foreach($item->comments as $comment)
       <div class="comment-header">
-        <img src="{{ asset('storage/' . $comment->user->profile_image) }}" class="profile-img">
+        <img src="{{ asset('images/' . $comment->user->profile_image) }}" class="profile-img">
         <span class="user-name">{{ $comment->user->name }}</span>
       </div>
       <div class="comment-box">

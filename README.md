@@ -28,7 +28,7 @@ php artisan migrate
 ```
 10. シーディングの実行
 ```
-php artisan db:seed
+php artisan migrate:fresh --seed
 ```
 11. シンボリックリンク作成
 ```

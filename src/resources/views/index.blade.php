@@ -23,7 +23,7 @@
             <div class="item-card">
                 <div class="item-image">
                     <a href="/item/{{ $item->id }}" class="item-card">
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->name }}">
+                    <img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}">
                     </a>
                 </div>
                 <p>{{ $item->name }}
