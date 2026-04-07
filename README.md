@@ -31,8 +31,8 @@ MAIL_FROM_NAME="FleaMarket"
 ```
 STRIPE_KEY=pk_test_xxxxx
 STRIPE_SECRET=sk_test_xxxxx
-```
 ※StripeのAPIキーは各自で取得してください。
+```
 6. アプリケーションキーの作成
 ```
 php artisan key:generate
@@ -44,6 +44,10 @@ php artisan migrate
 10. シーディングの実行
 ```
 php artisan migrate:fresh --seed
+```
+11. シンボリックリンク作成
+```
+php artisan storage:link
 ```
 ## userのログイン用初期データ
 - メールアドレス：hanako@test.com
