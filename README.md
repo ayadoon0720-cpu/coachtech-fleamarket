@@ -28,7 +28,11 @@ php artisan migrate
 ```
 10. シーディングの実行
 ```
-php artisan migrate --seed
+php artisan db:seed
+```
+11. シンボリックリンク作成
+```
+php artisan storage:link
 ```
 ## userのログイン用初期データ
 - メールアドレス：yui@test.com
