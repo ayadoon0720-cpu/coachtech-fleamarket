@@ -10,7 +10,7 @@
     <div class="profile-header">
 
     <div class="profile-user">
-        <img src="{{ $user->profile_image ? asset('images/' . $user->profile_image) . '?' . time() : '' }}" class="profile-img">
+        <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) . '?' . time() : '' }}" class="profile-img">
 
         <h2>{{ $user->name }}</h2>
     </div>

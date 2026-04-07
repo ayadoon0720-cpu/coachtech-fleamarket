@@ -18,7 +18,7 @@
         <!-- ロゴ -->
         <div class="logo">
             <a href="/">
-                <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH">
+                <img src="{{ asset('storage/items/COACHTECH-header.png') }}" alt="COACHTECH">
             </a>
         </div>
 

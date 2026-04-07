@@ -12,7 +12,7 @@
   {{-- 左側 --}}
   <div class="left">
     <div class="item-info">
-      <img src="{{ asset('images/' . $item->image) }}" class="item-img">
+      <img src="{{ asset('storage/' . $item->image) }}" class="item-img">
         <div class="item-text">
           <h2>{{ $item->name }}</h2>
           <p class="price">¥{{ number_format($item->price) }}</p>

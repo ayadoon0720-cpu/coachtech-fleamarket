@@ -12,7 +12,7 @@
        @csrf
           <div class="image-area">
             <div class="avatar">
-                <img id="preview" src="{{ $user->profile_image ? asset('images/' . $user->profile_image) : '' }}">
+                <img id="preview" src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : '' }}">
             </div>
             <label class="image-btn">
                 画像を選択する

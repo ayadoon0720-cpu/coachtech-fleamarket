@@ -13,6 +13,7 @@ services:
 
   php:
     build: ./docker/php
+    platform: linux/amd64
     volumes:
       - ./src:/var/www/
 
@@ -24,6 +25,7 @@ services:
 
   mysql:
     image: mysql:8.0.26
+    platform: linux/amd64
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: laravel_db

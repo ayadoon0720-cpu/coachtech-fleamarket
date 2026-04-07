@@ -14,7 +14,7 @@
    <header class="header">
     <div class="header-inner">
       <a href="/">
-        <img src="{{ asset('images/COACHTECHヘッダーロゴ.png') }}" alt="COACHTECH" class="logo">
+        <img src="{{ asset('storage/items/COACHTECH-header.png') }}" alt="COACHTECH" class="logo">
       </a>
     </div>
    </header>
