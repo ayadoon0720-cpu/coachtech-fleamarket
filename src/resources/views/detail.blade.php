@@ -66,7 +66,7 @@
 
   @foreach($item->comments as $comment)
       <div class="comment-header">
-        <img src="{{ asset('storage/items/' . $comment->user->profile_image) }}" class="profile-img">
+        <img src="{{ asset('storage/' . $comment->user->profile_image) }}" class="profile-img">
         <span class="user-name">{{ $comment->user->name }}</span>
       </div>
       <div class="comment-box">

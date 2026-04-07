@@ -12,7 +12,7 @@ class Purchase extends Model
     protected $fillable = [
         'user_id',
         'item_id',
-        'addresses_id',
+        'address_id',
         'payment_method',
     ];
 
@@ -28,7 +28,7 @@ class Purchase extends Model
 
     public function address()
     {
-        return $this->belongsTo(Address::class, 'addresses_id');
+        return $this->belongsTo(Address::class, 'address_id');
     }
 }
 

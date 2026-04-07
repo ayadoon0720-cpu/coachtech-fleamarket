@@ -46,11 +46,75 @@ php artisan migrate --seed
 ## テスト概要
 本アプリでは、会員登録・ログイン・商品購入などの主要機能について、正常系・異常系のテストを実施しています。
 ## テスト環境
-- OS：MacOS
-- PHP：8.1.34
-- Laravel：8.83.8
-- DB：MySQL
-- ブラウザ：Google Chrome
+1. テスト用データベースの作成(MySQL)
+```
+docker-compose exec mysql bash
+mysql -u root -p
+```
+パスワードは「docker-compose.yml」ファイルの`MYSQL_ROOT_PASSWORD:`に設定されている`root`を入力する。
+パスワード入力後：
+```
+CREATE DATABASE demo_test;
+SHOW DATABASES;
+```
+2. 「database.php」ファイルの`'mysql' => [ // 中略 ],`の下に以下の項目を追加
+```
+'mysql_test' => [
+        'driver' => 'mysql',
+        'url' => env('DATABASE_URL'),
+        'host' => env('DB_HOST', '127.0.0.1'),
+        'port' => env('DB_PORT', '3306'),
+        'database' => 'demo_test',
+        'username' => 'root',
+        'password' => 'root',
+        'unix_socket' => env('DB_SOCKET', ''),
+        'charset' => 'utf8mb4',
+        'collation' => 'utf8mb4_unicode_ci',
+        'prefix' => '',
+        'prefix_indexes' => true,
+        'strict' => true,
+        'engine' => null,
+        'options' => extension_loaded('pdo_mysql') ? array_filter([
+          PDO::MYSQL_ATTR_SSL_CA => env.       ('MYSQL_ATTR_SSL_CA'),
+        ]) : [],
+],
+```
+3. テスト用「.env」ファイルの作成
+```
+docker-compose exec php bash
+cp .env .env.testing
+```
+4. 「.env.testing」ファイルの文頭部分にある`APP_ENV`と`APP_KEY`を以下のように編集
+```
+APP_ENV=test
+APP_KEY=
+```
+5. 「.env.testing」ファイルのDB設定を以下のように編集
+```
+DB_CONNECTION=mysql_test
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=demo_test
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+6. 新たなテスト用のアプリケーションキーを追加
+```
+php artisan key:generate --env=testing
+```
+7. マイグレーションの実行
+```
+php artisan migrate --env=testing
+```
+8. 「phpunit.xml」ファイルの`DB_CONNECTION`と`DB_DATABASE`を以下のように編集
+```
+<server name="DB_CONNECTION" value="mysql_test"/>
+<server name="DB_DATABASE" value="demo_test"/>
+```
+9. テストファイルの作成
+```
+php artisan make:test HelloTest
+```
 ## テスト手順
 本アプリでは、以下の機能について「テストケース一覧」に基づきテストを実施しました。
 ### 主なテスト対象機能
@@ -117,7 +181,7 @@ php artisan migrate --seed
 5. 再度押すと解除されることを確認
 #### 確認事項
 - いいねアイコンが押下された状態では色が変化すること
-- いいねアイコンが押下されるといいね合計値が増加表示されること 
+- いいねアイコンが押下されるといいね合計値が増加表示されること
 - いいねが解除されるといいね合計値が減少表示されること
 - いいねアイコンを押下することで、商品一覧画面のマイリストに登録されること
 ### テスト結果

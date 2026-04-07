@@ -102,6 +102,7 @@ class ItemController extends Controller
    public function purchaseStore(purchaseRequest $request, $item_id)
    {
        $item = Item::findOrFail($item_id);
+       $user = Auth::user();
 
        Stripe::setApiKey(env('STRIPE_SECRET'));
 
@@ -114,6 +115,20 @@ class ItemController extends Controller
             $methods = ['konbini'];
         } else {
             abort(400);
+        }
+
+    // コンビニだけここで保存
+        if ($paymentMethod === 'konbini') {
+            Purchase::create([
+                'user_id' => $user->id,
+                'item_id' => $item->id,
+                'payment_method' => 'konbini',
+                'address_id' => Address::where('user_id', $user->id)->value('id'),
+            ]);
+
+            $item->update([
+                'is_sold' => true,
+            ]);
         }
 
         $session = Session::create([
@@ -132,6 +147,7 @@ class ItemController extends Controller
             'success_url' => url('/purchase/success/' . $item->id),
             'cancel_url' => url('/'),
         ]);
+
         return redirect($session->url);
    }
 
@@ -140,19 +156,21 @@ class ItemController extends Controller
       $item = Item::findOrFail($item_id);
       $user = Auth::user();
 
+      if (!Purchase::where('item_id', $item->id)->where('user_id', $user->id)->exists()) {
+
     // 購入履歴
       Purchase::create([
         'user_id' => $user->id,
         'item_id' => $item->id,
         'payment_method' => 'card',
-        'addresses_id' => Address::where('user_id', $user->id)->value('id'),
+        'address_id' => Address::where('user_id', $user->id)->value('id'),
       ]);
 
     // soldにする
       $item->update([
         'is_sold' => true,
       ]);
-
+      }
     return redirect('/');
    }
 
